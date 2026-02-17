@@ -15,10 +15,10 @@ app = Flask(__name__)
 
 def load_tokens(region):
     try:
-        if region == "CIS":
-            with open("token-CIS.json", "r") as f:
+        if region == "IND":
+            with open("token_ind.json", "r") as f:
                 tokens = json.load(f)
-        elif region in {"BR", "CIS", "SAC", "NA"}:
+        elif region in {"BR", "US", "SAC", "NA"}:
             with open("token_br.json", "r") as f:
                 tokens = json.load(f)
         else:
@@ -57,12 +57,12 @@ def enc(uid):
 
 async def make_request_async(encrypt, region, token, session):
     try:
-        if region == "CIS":
-            url = "https://clientbp.ggpolarbear.com/GetPlayerPersonalShow"
+        if region == "IND":
+            url = "https://client.ind.freefiremobile.com/GetPlayerPersonalShow"
         elif region in {"BR", "US", "SAC", "NA"}:
             url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
         else:
-            url = "https://clientbp.ggpolarbear.com/GetPlayerPersonalShow"
+            url = "https://clientbp.ggblueshark.com/GetPlayerPersonalShow"
 
         edata = bytes.fromhex(encrypt)
         headers = {
@@ -74,7 +74,7 @@ async def make_request_async(encrypt, region, token, session):
             'Expect': "100-continue",
             'X-Unity-Version': "2018.4.11f1",
             'X-GA': "v1 1",
-            'ReleaseVersion': "OB52"
+            'ReleaseVersion': "OB51"
         }
 
         async with session.post(url, data=edata, headers=headers, ssl=False, timeout=5) as response:
@@ -141,7 +141,7 @@ async def visit():
             "FailedVisits": failed_count,
             "PlayerNickname": player_name,
             "UID": player_uid,
-            "Credits": "@nur_sailauov"
+            "Credits": "@mr_udit_ff"
         }
         return jsonify(summary)
     except Exception as e:
