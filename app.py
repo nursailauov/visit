@@ -15,8 +15,8 @@ app = Flask(__name__)
 
 def load_tokens(region):
     try:
-        if region == "IND":
-            with open("token_ind.json", "r") as f:
+        if region == "cis":
+            with open("token_cis.json", "r") as f:
                 tokens = json.load(f)
         elif region in {"BR", "US", "SAC", "NA"}:
             with open("token_br.json", "r") as f:
@@ -57,8 +57,8 @@ def enc(uid):
 
 async def make_request_async(encrypt, region, token, session):
     try:
-        if region == "IND":
-            url = "https://client.ind.freefiremobile.com/GetPlayerPersonalShow"
+        if region == "cis":
+            url = "https://clientbp.ggblueshark.com/GetPlayerPersonalShow"
         elif region in {"BR", "US", "SAC", "NA"}:
             url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
         else:
