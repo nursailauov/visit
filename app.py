@@ -58,7 +58,7 @@ def enc(uid):
 async def make_request_async(encrypt, region, token, session):
     try:
         if region == "cis":
-            url = "https://clientbp.ggblueshark.com/GetPlayerPersonalShow"
+            url = "https://clientbp.ggpolarbear.com/GetPlayerPersonalShow"
         elif region in {"BR", "US", "SAC", "NA"}:
             url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
         else:
