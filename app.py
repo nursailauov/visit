@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 def load_tokens(region):
     try:
-        if region == "cis":
+        if region == "CIS":
             with open("token_cis.json", "r") as f:
                 tokens = json.load(f)
         elif region in {"BR", "US", "SAC", "NA"}:
@@ -57,7 +57,7 @@ def enc(uid):
 
 async def make_request_async(encrypt, region, token, session):
     try:
-        if region == "cis":
+        if region == "CIS":
             url = "https://clientbp.ggpolarbear.com/GetPlayerPersonalShow"
         elif region in {"BR", "US", "SAC", "NA"}:
             url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
@@ -74,7 +74,7 @@ async def make_request_async(encrypt, region, token, session):
             'Expect': "100-continue",
             'X-Unity-Version': "2018.4.11f1",
             'X-GA': "v1 1",
-            'ReleaseVersion': "OB51"
+            'ReleaseVersion': "OB52"
         }
 
         async with session.post(url, data=edata, headers=headers, ssl=False, timeout=5) as response:
